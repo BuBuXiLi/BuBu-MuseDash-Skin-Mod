@@ -19,3 +19,10 @@ BuBu is a skin mod for Muse Dash. It includes five built-in presets and supports
 - Put each custom skin in its own folder under `Custom Skin`, with a `skin.json` file and its PNG atlases. Select the skin after starting the game and apply it. DLL updates leave the custom skin folder intact.
 - The DLL embeds 14 preset PNGs. During an upgrade, BuBu checks for the exact file `bubu.pak` alongside the DLL and imports modified textures. The original PAK is retained.
 - The mod swaps Unity material textures at runtime and keeps the original characters, rigs, animations, and gameplay.
+源码 / Source
+本仓库以 MIT 许可证 开源，源码位于 src/。
+
+构建：进入 src 目录，执行 dotnet build MDSkinSwap.csproj -c Release，产物为 bin/Release/bubu.dll
+需要 .NET SDK 6.0+，以及已安装 MelonLoader 0.7.3 的游戏目录；默认查找 Steam 安装路径，可用 -p:GameDir="..." 覆盖
+详细构建说明见 src/构建说明.md
+The source code is licensed under the MIT License and lives in src/. Build it with dotnet build MDSkinSwap.csproj -c Release from that folder.
