@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>bubu</AssemblyName>
+    <Product>BuBu</Product>
+    <Authors>BuBuXiLi</Authors>
+    <Version>1.6.0</Version>
+    <Description>《喵斯快跑》角色外观包，支持内置预设和独立安装的自定义皮肤。</Description>
+    <RootNamespace>Bubu</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GameDir>C:\Program Files (x86)\Steam\steamapps\common\Muse Dash</GameDir>
+    <MLNet6>$(GameDir)\MelonLoader\net6</MLNet6>
+    <Il2CppAsm>$(GameDir)\MelonLoader\Il2CppAssemblies</Il2CppAsm>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="MenuArt\entry.png;MenuArt\entry_open.png;MenuArt\panel.png;MenuArt\credits.png"
+                      LogicalName="SkinMenu.%(Filename)%(Extension)" />
+    <EmbeddedResource Include="Official-1.5.4.pak" LogicalName="Bubu.Official-1.5.4.pak" />
+    <EmbeddedResource Include="$(PresetPack)" LogicalName="Bubu.Presets.pak" Condition="'$(PresetPack)' != ''" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MelonLoader">
+      <HintPath>$(MLNet6)\MelonLoader.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppInterop.Runtime">
+      <HintPath>$(MLNet6)\Il2CppInterop.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>$(Il2CppAsm)\Il2Cppmscorlib.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(Il2CppAsm)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(Il2CppAsm)\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+      <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(Il2CppAsm)\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(Il2CppAsm)\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
+
